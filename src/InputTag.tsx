@@ -4,7 +4,6 @@ import React from "react";
 import {
     View,
     Text,
-    TextInputProps,
     NativeSyntheticEvent,
     TextInputKeyPressEventData,
     TouchableOpacity,
@@ -39,7 +38,6 @@ const TagTextInput = React.forwardRef<TagTextInputRef, TagTextInputProps>(
             removeTag,
             addTag,
         },
-        ref
     ) => {
         const [tag, setTag] = React.useState<string>(initialValue);
         /** text input and event process */
@@ -49,7 +47,7 @@ const TagTextInput = React.forwardRef<TagTextInputRef, TagTextInputProps>(
         }, []);
         //
         const onSubmitEditing = React.useCallback(
-            (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+            (_: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
                 if (createTagOnReturn) {
                     add(tag);
                 }
@@ -129,14 +127,15 @@ const TagList = React.forwardRef<TagListRef, TagListProps>(
             }),
             [tags]
         );
-        return tags.map((tag) => (
+        return <>
+        {tags.map((tag) => (
             <Chip
                 key={tag.id}
                 tag={tag}
                 onDelete={() => handlerRemoveTag(tag)}
                 onPress={() => handlerPressTag?.(tag)}
             />
-        ));
+        ))}</>
     }
 );
 

@@ -1,4 +1,4 @@
 /** @format */
 
-export { default as default, useInputTag } from "./InputTag";
-export type * from "./type";
+export { default, useInputTag } from './InputTag';
+export * from './type';
