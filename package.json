@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.01",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,6 +33,13 @@
   },
   "name": "react-native-input-tags",
   "author": "bienfait shomari",
+  "repository": "https://github.com/bienfaitshm/react-native-input-tags",
+  "keywords": [
+    "react",
+    "chip",
+    "tags",
+    "tag input"
+  ],
   "module": "dist/react-native-input-tags.esm.js",
   "size-limit": [
     {

@@ -1,10 +1,10 @@
 <!-- @format -->
 
-# React-Native-Tags
+# react-native-input-tags
 
-[![Build Status](https://travis-ci.org/peterp/react-native-tags.svg?branch=master)](https://travis-ci.org/peterp/react-native-tags)
-[![npm](https://img.shields.io/npm/dt/express.svg)](https://www.npmjs.com/package/react-native-tags)
-[![npm version](https://badge.fury.io/js/react-native-tags.svg)](https://badge.fury.io/js/react-native-tags)
+[![Build Status](https://travis-ci.org/peterp/react-native-input-tags.svg?branch=master)](https://travis-ci.org/peterp/react-native-input-tags)
+[![npm](https://img.shields.io/npm/dt/express.svg)](https://www.npmjs.com/package/react-native-input-tags)
+[![npm version](https://badge.fury.io/js/react-native-input-tags.svg)](https://badge.fury.io/js/react-native-input-tags)
 
 A React Native component that allows you to input text and formats the text
 into a tag when a space or comma is entered. Tapping on the tag will remove it.
@@ -14,44 +14,39 @@ into a tag when a space or comma is entered. Tapping on the tag will remove it.
 ## Installation
 
 ```terminal
-npm install --save react-native-tags
+npm install --save react-native-input-tags
 ```
 
 ```terminal
-yarn add react-native-tags
+yarn add react-native-input-tags
 ```
 
 ## Usage
 
 ```jsx
-import React from "react";
-import { TouchableOpacity, Text } from "react-native";
-import Tags from "react-native-tags";
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import Tags from 'react-native-input-tags';
 
 const MyTagInput = () => (
-    <Tags
-        initialText="monkey"
-        textInputProps={{
-            placeholder: "Any type of animal",
-        }}
-        initialTags={["dog", "cat", "chicken"]}
-        onChangeTags={(tags) => console.log(tags)}
-        onTagPress={(index, tagLabel, event, deleted) =>
-            console.log(
-                index,
-                tagLabel,
-                event,
-                deleted ? "deleted" : "not deleted"
-            )
-        }
-        containerStyle={{ justifyContent: "center" }}
-        inputStyle={{ backgroundColor: "white" }}
-        renderTag={({ tag, index, onPress, deleteTagOnPress, readonly }) => (
-            <TouchableOpacity key={`${tag}-${index}`} onPress={onPress}>
-                <Text>{tag}</Text>
-            </TouchableOpacity>
-        )}
-    />
+  <Tags
+    initialText="monkey"
+    textInputProps={{
+      placeholder: 'Any type of animal',
+    }}
+    initialTags={['dog', 'cat', 'chicken']}
+    onChangeTags={tags => console.log(tags)}
+    onTagPress={(index, tagLabel, event, deleted) =>
+      console.log(index, tagLabel, event, deleted ? 'deleted' : 'not deleted')
+    }
+    containerStyle={{ justifyContent: 'center' }}
+    inputStyle={{ backgroundColor: 'white' }}
+    renderTag={({ tag, index, onPress, deleteTagOnPress, readonly }) => (
+      <TouchableOpacity key={`${tag}-${index}`} onPress={onPress}>
+        <Text>{tag}</Text>
+      </TouchableOpacity>
+    )}
+  />
 );
 ```
 
