@@ -47,6 +47,22 @@ export default function App() {
 }
 ```
 
+### `useInputTag`
+
+Is ref object,
+useInputTag allows you to have access to inputTag values
+
+```tsx
+const inputTag = useInputTag();
+
+// get all tags inputed
+inputTag.current?.getTags();
+```
+
+| values  | Description                              |
+| ------- | ---------------------------------------- |
+| getTags | function return list of all tags inputed |
+
 ## Render Props
 
 ### `renderTag`
@@ -74,28 +90,39 @@ rendered then pass in a renderTag prop.
 />
 ```
 
+### `textInputComponent`
+
+If you would like to add new functionality or modify the way that the Textinput are
+rendered then pass in a textInputComponent prop.
+
+| PropName     | Description                                                                                                                                                                                                                           |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| value        | the tag string value input                                                                                                                                                                                                            |
+| onChangeText | Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler.                                                                                                            |
+| onKeyPress   | Callback that is called when a key is pressed. This will be called with { nativeEvent: { key: keyValue } } where keyValue is 'Enter' or 'Backspace' for respective keys and the typed-in character otherwise including ' ' for space. |
+
+Fires before onChange callbacks. Note: on Android only the inputs from soft keyboard are handled, not the hardware keyboard inputs. |
+| onSubmitEditing | Callback that is called when the text input's submit button is pressed. |
+| style | Text style |
+
+```tsx
+import { TextInput } from 'react-native';
+//custom text input
+<InputTag
+  ref={inputTag}
+  textInputComponent={props => {
+    return <TextInput placeholder="Tag ici..." {...props} />;
+  }}
+/>;
+```
+
 ## Props
 
-| PropName          | Description                                                                                    | Default         |
-| ----------------- | ---------------------------------------------------------------------------------------------- | --------------- |
-| initialText       | The input element's text                                                                       |                 |
-| textInputProps    | [forward props to the textInput](https://facebook.github.io/react-native/docs/textinput#props) |                 |
-| initialTags       | ['the', 'initial', 'tags']                                                                     |                 |
-| createTagOnString | Triggers new tag creation                                                                      | [",", ".", " "] |
-| onChangeTags      | Fires when tags are added or removed                                                           |                 |
-| maxNumberOfTags   | The max number of tags that can be entered                                                     | infinity        |
-| onTagPress        | Fires when tags are pressed                                                                    |                 |
-| readonly          | Tags cannot be modified                                                                        | false           |
-| deleteTagOnPress  | Remove the tag when pressed                                                                    | true            |
-| renderTag         | Manage the rendering of your own `Tag`                                                         |                 |
-
-## Style modification props
-
-| PropName            | Description                    | Default |
-| ------------------- | ------------------------------ | ------- |
-| style               | Style (`containerStyle` alias) |         |
-| containerStyle      | Style                          |         |
-| inputContainerStyle | Style                          |         |
-| inputStyle          | Style                          |         |
-| tagContainerStyle   | Style                          |         |
-| tagTextStyle        | Style                          |         |
+| PropName           | Description                                                             | Default         |
+| ------------------ | ----------------------------------------------------------------------- | --------------- |
+| initialValue       | The input element's text                                                |                 |
+| initialTags        | intial tags eg.`[{id:"yuf", name:"reactjs"}]`                           | []              |
+| createTagOnString  | Triggers new tag creation                                               | [",", ".", " "] |
+| handlerPressTag    | function call when the tag is pressed `function handlerPressTag(tag){}` | undenfied       |
+| textInputComponent | render TextInput                                                        |                 |
+| renderTag          | Manage the rendering of your own `Tag`                                  |                 |
