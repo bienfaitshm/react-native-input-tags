@@ -1,5 +1,5 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -38,7 +38,8 @@
     "react",
     "chip",
     "tags",
-    "tag input"
+    "tag input",
+    "react-native"
   ],
   "module": "dist/react-native-input-tags.esm.js",
   "size-limit": [
