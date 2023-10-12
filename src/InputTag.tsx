@@ -38,6 +38,7 @@ const TagTextInput = React.forwardRef<TagTextInputRef, TagTextInputProps>(
             removeTag,
             addTag,
         },
+        ref
     ) => {
         const [tag, setTag] = React.useState<string>(initialValue);
         /** text input and event process */
@@ -82,6 +83,9 @@ const TagTextInput = React.forwardRef<TagTextInputRef, TagTextInputProps>(
             },
             [tag]
         );
+        React.useImperativeHandle(ref,()=>({
+            
+        }),[])
         return (
             <TextInput
                 style={textInputStyle}
