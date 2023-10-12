@@ -54,11 +54,25 @@ export default function App() {
 If you would like to add new functionality or modify the way that the tags are
 rendered then pass in a renderTag prop.
 
-| PropName | Description                                                  |
-| -------- | ------------------------------------------------------------ |
-| tag      | text of the tag                                              |
-| index    | position in the array of tags                                |
-| onPress  | Removes the tag if `deleteTagsOnPress` and readonly is false |
+| PropName | Description                                          |
+| -------- | ---------------------------------------------------- |
+| tag      | the tag item { id:string , name:string }             |
+| onPress  | callback when the chip or tag is cliked for deleting |
+| onPress  | callback when the chip or tag is cliked for pressing |
+
+```tsx
+//custom render tag
+<InputTag
+  ref={inputTag}
+  renderTag={({ tag, onPress, onDelete }) => {
+    return (
+      <Text style={{ margin: 10 }} onPress={onDelete}>
+        {tag.name}
+      </Text>
+    );
+  }}
+/>
+```
 
 ## Props
 

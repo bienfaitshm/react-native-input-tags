@@ -21,7 +21,7 @@ import type {
     TagTextInputProps,
     TagTextInputRef,
 } from "./type";
-import { addTag, canAddTag, getLastTag, removeTag } from "./utils";
+import { addTag, canAddTag, generateId, getLastTag, removeTag } from "./utils";
 
 const KEYS_PRESS_VALUES = ["Backspace"];
 const TAGS_STRING = [",", " "];
@@ -84,7 +84,7 @@ const TagTextInput = React.forwardRef<TagTextInputRef, TagTextInputProps>(
             [tag]
         );
         React.useImperativeHandle(ref,()=>({
-            
+
         }),[])
         return (
             <TextInput
@@ -192,6 +192,3 @@ export function useInputTag() {
     return React.useRef<InputTagPropsRef>(null);
 }
 
-function generateId(): string | number {
-    throw new Error("Function not implemented.");
-}
